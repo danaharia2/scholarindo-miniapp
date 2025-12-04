@@ -212,10 +212,22 @@
         .quick-action:hover {
             background: var(--primary-light);
             color: white;
+            transform: translateY(-2px);
         }
 
         .quick-action:hover .action-icon {
             color: white;
+            transform: scale(1.1);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .action-icon {
@@ -246,6 +258,9 @@
             cursor: pointer;
             transition: var(--transition);
             border: 2px solid transparent;
+            animation: fadeInUp 0.5s ease forwards;
+            animation-delay: calc(var(--i) * 0.1s);
+            opacity: 0;
         }
 
         .language-card:hover {
@@ -689,6 +704,17 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+        @media (min-width: 481px) and (max-width: 768px) {
+            .languages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .languages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
 
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
@@ -764,7 +790,7 @@
                     <i class="fas fa-graduation-cap logo"></i>
                 </div>
                 <div>
-                    <h1 class="app-title">Scholarindo Bot</h1>
+                    <h1 class="app-title">Scholarindo</h1>
                     <p class="app-subtitle">Platform Pembelajaran Bahasa</p>
                 </div>
             </div>
@@ -782,11 +808,11 @@
                     <!-- Quick Stats -->
                     <div class="stats-container">
                         <div class="stat-card">
-                            <div class="stat-number">5</div>
+                            <div class="stat-number">9</div>
                             <div class="stat-label">Bahasa</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number">12</div>
+                            <div class="stat-number">24</div>
                             <div class="stat-label">Kelas</div>
                         </div>
                         <div class="stat-card">
@@ -846,6 +872,14 @@
                         <div class="quick-action" onclick="showProgramModal('bencana')">
                             <i class="fas fa-hands-helping action-icon"></i>
                             <span class="action-label">Peduli Bencana</span>
+                        </div>
+                        <div class="quick-action" onclick="showLanguageModal('german')">
+                            <i class="fas fa-landmark action-icon"></i>
+                            <span class="action-label">German</span>
+                        </div>
+                        <div class="quick-action" onclick="showLanguageModal('russian')">
+                            <i class="fas fa-snowflake action-icon"></i>
+                            <span class="action-label">Russian</span>
                         </div>
                     </div>
                 </div>
@@ -914,7 +948,7 @@
                                 </div>
                                 <div class="contact-info">
                                     <h4>Instagram</h4>
-                                    <p>@scholarindo.official</p>
+                                    <p>@scholar.indo</p>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -933,21 +967,31 @@
                         <h3 class="about-title">Struktur Organisasi</h3>
                         <div class="org-chart">
                             <div class="org-level">
+                                <div class="org-member" style="background: linear-gradient(135deg, #8B4513, #D2691E); color: white;">
+                                    <div class="member-role">Founder</div>
+                                    <div class="member-name">Teh Awa</div>
+                                </div>
+                                <div class="org-member" style="background: linear-gradient(135deg, #8B4513, #D2691E); color: white;">
+                                    <div class="member-role">Founder</div>
+                                    <div class="member-name">Kak Dinda</div>
+                                </div>
+                            </div>
+                            <div class="org-level">
                                 <div class="org-member">
                                     <div class="member-role">Presiden</div>
-                                    <div class="member-name">Dr. Ahmad Wijaya</div>
+                                    <div class="member-name">Fulan</div>
                                 </div>
                             </div>
                             <div class="org-level">
                                 <div class="org-member">
                                     <div class="member-role">Wakil Presiden</div>
-                                    <div class="member-name">Siti Rahayu, M.Pd.</div>
+                                    <div class="member-name">Fulanah</div>
                                 </div>
                             </div>
                             <div class="org-level">
                                 <div class="org-member">
                                     <div class="member-role">Sekretaris</div>
-                                    <div class="member-name">Budi Santoso, S.S.</div>
+                                    <div class="member-name">Fulanah</div>
                                 </div>
                             </div>
                             <div class="org-level">
@@ -976,6 +1020,17 @@
                                     <div class="member-name">Assistant Mentor</div>
                                 </div>
                             </div>
+                        </div>
+                        <div style="margin-top: 24px; padding: 16px; background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(210, 105, 30, 0.1)); border-radius: var(--border-radius);">
+                            <h4 style="color: #8B4513; margin-bottom: 12px;">
+                                <i class="fas fa-crown"></i> Tentang Founder
+                            </h4>
+                            <p style="color: var(--gray); line-height: 1.6;">
+                                <strong>Teh Awa</strong> dan <strong>Kak Dinda</strong> adalah pendiri Scholarindo yang memiliki visi untuk 
+                                membuat pendidikan bahasa berkualitas dapat diakses oleh semua orang. Dengan latar belakang pendidikan 
+                                dan pengalaman mengajar yang luas, mereka membangun Scholarindo dari nol hingga menjadi platform 
+                                pembelajaran bahasa terkemuka di Indonesia.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1121,6 +1176,62 @@
                     mentor: 'Fatima Al-Mansoor',
                     coMentor: 'Omar Al-Hakim',
                     students: 98
+                }
+            },
+            {
+                id: 'russian',
+                name: 'Russian',
+                flag: '🇷🇺',
+                icon: 'fas fa-snowflake',
+                description: 'Bahasa Rusia dengan aksara Cyrillic dan budaya Slavic',
+                levels: ['A1', 'A2', 'B1', 'B2'],
+                structure: {
+                    penanggungJawab: 'Ivan Petrov',
+                    mentor: 'Anastasia Ivanova',
+                    coMentor: 'Dmitry Sokolov',
+                    students: 87
+                }
+            },
+            {
+                id: 'german',
+                name: 'German',
+                flag: '🇩🇪',
+                icon: 'fas fa-landmark',
+                description: 'Bahasa Jerman dengan tata bahasa yang presisi',
+                levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+                structure: {
+                    penanggungJawab: 'Hans Müller',
+                    mentor: 'Anna Schmidt',
+                    coMentor: 'Klaus Wagner',
+                    students: 112
+                }
+            },
+            {
+                id: 'thai',
+                name: 'Thai',
+                flag: '🇹🇭',
+                icon: 'fas fa-umbrella-beach',
+                description: 'Bahasa Thailand dengan aksara Thai dan budaya yang kaya',
+                levels: ['Dasar', 'Menengah', 'Lanjutan'],
+                structure: {
+                    penanggungJawab: 'Somsak Chaiyaporn',
+                    mentor: 'Nonglak Srisuk',
+                    coMentor: 'Preecha Wong',
+                    students: 76
+                }
+            },
+            {
+                id: 'turkish',
+                name: 'Turkish',
+                flag: '🇹🇷',
+                icon: 'fas fa-mosque',
+                description: 'Bahasa Turki dengan pengaruh Ottoman dan budaya Anatolia',
+                levels: ['A1', 'A2', 'B1', 'B2'],
+                structure: {
+                    penanggungJawab: 'Mehmet Yılmaz',
+                    mentor: 'Ayşe Demir',
+                    coMentor: 'Can Kaya',
+                    students: 92
                 }
             }
         ];
