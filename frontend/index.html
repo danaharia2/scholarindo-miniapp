@@ -771,6 +771,107 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-dark);
         }
+        /* Style untuk class cards di modal all classes */
+        .class-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 2px solid var(--light-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .class-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .class-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .class-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .class-card-description {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .class-card-stats {
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .class-card-stat-number {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .class-card-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .class-card-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .class-card-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Style untuk class info dalam modal */
+        .class-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .class-info-item {
+            background: var(--light);
+            padding: 12px;
+            border-radius: var(--border-radius);
+        }
+
+        .class-info-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 4px;
+        }
+
+        .class-info-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Responsive untuk class info */
+        @media (max-width: 480px) {
+            .class-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         /* Utility Classes */
         .hidden {
@@ -1151,13 +1252,62 @@
                 flag: '🇺🇸',
                 icon: 'fas fa-globe-americas',
                 description: 'Bahasa Inggris dengan berbagai level pembelajaran',
-                levels: ['Basic', 'Intermediate', 'Advanced', 'Business'],
-                structure: {
-                    penanggungJawab: 'Dr. John Smith',
-                    mentor: 'Sarah Johnson, M.A.',
-                    coMentor: 'Michael Brown',
-                    students: 245
-                }
+                classes: [
+                    {    
+                        id: 'english_basic',
+                        level: 'Basic',
+                        description: 'Kelas pemula untuk bahasa Inggris sehari-hari',
+                        students: 85,
+                        structure: {
+                            penanggungJawab: 'Dr. John Smith',
+                            mentor: 'Sarah Johnson, M.A.',
+                            coMentor: 'Michael Brown',
+                            students: 245
+                        }
+                    },
+                    {
+                        id: 'english_intermediate',
+                        level: 'Intermediate',
+                        description: 'Kelas menengah untuk percakapan formal',
+                        students: 62,
+                        structure: {
+                            penanggungJawab: 'Prof. David Wilson',
+                            mentor: 'Emily Clark',
+                            coMentor: 'Robert Taylor',
+                            teachers: 2,
+                            startDate: '20 Februari 2024',
+                            schedule: 'Selasa & Jumat, 18:00-20:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'english_advanced',
+                        level: 'Advanced',
+                        description: 'Kelas lanjutan untuk bisnis dan akademik',
+                        students: 45,
+                        structure: {
+                            penanggungJawab: 'Dr. James Anderson',
+                            mentor: 'Jessica White',
+                            coMentor: 'Daniel Harris',
+                            teachers: 2,
+                            startDate: '10 Maret 2024',
+                            schedule: 'Rabu & Sabtu, 17:00-19:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'english_business',
+                        level: 'Business',
+                        description: 'Kelas khusus untuk keperluan bisnis',
+                        students: 53,
+                        structure: {
+                            penanggungJawab: 'Mark Thompson',
+                            mentor: 'Lisa Martinez',
+                            coMentor: 'Paul Davis',
+                            teachers: 3,
+                            startDate: '5 April 2024',
+                            schedule: 'Senin & Kamis, 20:00-22:00 WIB'
+                        }
+                    }
+                ]
             },
             {
                 id: 'japanese',
@@ -1166,12 +1316,78 @@
                 icon: 'fas fa-torii-gate',
                 description: 'Bahasa Jepang dengan fokus pada percakapan sehari-hari',
                 levels: ['N5', 'N4', 'N3', 'N2', 'N1'],
-                structure: {
-                    penanggungJawab: 'Prof. Tanaka Hiroshi',
-                    mentor: 'Yuki Nakamura',
-                    coMentor: 'Kenji Sato',
-                    students: 189
-                }
+                classes: [
+                    {
+                        id: 'japanese_n5',
+                        level: 'N5',
+                        description: 'Level pemula untuk bahasa Jepang dasar',
+                        students: 67,
+                        structure: {
+                            penanggungJawab: 'Prof. Tanaka Hiroshi',
+                            mentor: 'Yuki Nakamura',
+                            coMentor: 'Kenji Sato',
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'japanese_n4',
+                        level: 'N4',
+                        description: 'Level dasar menengah untuk percakapan',
+                        students: 45,
+                        structure: {
+                            penanggungJawab: 'Akira Yamamoto',
+                            mentor: 'Sakura Kobayashi',
+                            coMentor: 'Takeshi Suzuki',
+                            teachers: 3,
+                            startDate: '25 Februari 2024',
+                            schedule: 'Selasa & Jumat, 19:00-21:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'japanese_n3',
+                        level: 'N3',
+                        description: 'Level menengah untuk keperluan sehari-hari',
+                        students: 38,
+                        structure: {
+                            penanggungJawab: 'Yoshida Kenji',
+                            mentor: 'Mika Tanaka',
+                            coMentor: 'Hiroshi Watanabe',
+                            teachers: 2,
+                            startDate: '15 Maret 2024',
+                            schedule: 'Rabu & Sabtu, 18:00-20:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'japanese_n2',
+                        level: 'N2',
+                        description: 'Level menengah atas untuk bisnis',
+                        students: 29,
+                        structure: {
+                            penanggungJawab: 'Sato Makoto',
+                            mentor: 'Rina Takahashi',
+                            coMentor: 'Kenta Ito',
+                            teachers: 2,
+                            startDate: '8 April 2024',
+                            schedule: 'Senin & Kamis, 20:00-22:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'japanese_n1',
+                        level: 'N1',
+                        description: 'Level lanjutan untuk keperluan profesional',
+                        students: 20,
+                        structure: {
+                            penanggungJawab: 'Yamashita Ken',
+                            mentor: 'Naomi Sato',
+                            coMentor: 'Daiki Kobayashi',
+                            teachers: 1,
+                            startDate: '22 April 2024',
+                            schedule: 'Selasa & Jumat, 20:30-22:30 WIB'
+                        }
+                    }
+                ]
             },
             {
                 id: 'korean',
@@ -1180,12 +1396,52 @@
                 icon: 'fas fa-dharmachakra',
                 description: 'Bahasa Korea dengan sistem pembelajaran yang menyenangkan',
                 levels: ['Beginner', 'Intermediate', 'Advanced'],
-                structure: {
-                    penanggungJawab: 'Kim Min-ji',
-                    mentor: 'Park Ji-hoon',
-                    coMentor: 'Lee Soo-min',
-                    students: 156
-                }
+                classes: [
+                    {
+                        id: 'korea_beginnner',
+                        level: 'Beginner',
+                        description: 'Level pemula untuk komunikasi dasar',
+                        students: 42,
+                        structure: {
+                            penanggungJawab: 'Kim Min-ji',
+                            mentor: 'Park Ji-hoon',
+                            coMentor: 'Lee Soo-min',
+                            students: 156,
+                            teachers: 2,
+                            startDate: '10 Januari 2024',
+                            schedule: 'Rabu & Sabtu, 18:00-20:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'korea_intermediate',
+                        level: 'Intermediate',
+                        description: 'Level pemula untuk komunikasi dasar',
+                        students: 42,
+                        structure: {
+                            penanggungJawab: 'Kim Min-ji',
+                            mentor: 'Park Ji-hoon',
+                            coMentor: 'Lee Soo-min',
+                            students: 156,
+                            teachers: 2,
+                            startDate: '10 Januari 2024',
+                            schedule: 'Rabu & Sabtu, 18:00-20:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'korea_advanced',
+                        level: 'Advanced',
+                        description: 'Level dasar untuk percakapan sehari-hari',
+                        students: 35,
+                        structure: {
+                            penanggungJawab: 'Kim Min-ji',
+                            mentor: 'Park Ji-hoon',
+                            coMentor: 'Lee Soo-min',
+                            students: 156,
+                            teachers: 2,
+                            startDate: '10 Januari 2024',
+                            schedule: 'Rabu & Sabtu, 18:00-20:00 WIB'
+                        }
+                    },
             },
             {
                 id: 'mandarin',
@@ -1193,13 +1449,54 @@
                 flag: '🇨🇳',
                 icon: 'fas fa-dragon',
                 description: 'Bahasa Mandarin dengan pengajaran karakter Hanzi',
-                levels: ['HSK 1', 'HSK 2', 'HSK 3', 'HSK 4'],
-                structure: {
-                    penanggungJawab: 'Chen Wei',
-                    mentor: 'Zhang Li',
-                    coMentor: 'Wang Fang',
-                    students: 134
-                }
+                levels: ['HSK 1', 'HSK 2', 'HSK 3'],
+                classes: [
+                    {
+                        id: 'mandarin_HSK1',
+                        level: 'HSK 1',
+                        description: 'Level pemula untuk bahasa China dasar',
+                        students: 67,
+                        structure: {
+                            penanggungJawab: 'Chen Wei',
+                            mentor: 'Zhang Li',
+                            coMentor: 'Wang Fang',
+                            students: 134,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'mandarin_HSK2',
+                        level: 'HSK 2',
+                        description: 'Level dasar menengah untuk percakapan',
+                        students: 45,
+                        structure: {
+                            penanggungJawab: 'Chen Wei',
+                            mentor: 'Zhang Li',
+                            coMentor: 'Wang Fang',
+                            students: 134,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'mandarin_HSK3',
+                        level: 'HSK 3',
+                        description: 'Level menengah untuk keperluan sehari-hari',
+                        students: 38,
+                        structure: {
+                            penanggungJawab: 'Chen Wei',
+                            mentor: 'Zhang Li',
+                            coMentor: 'Wang Fang',
+                            students: 134,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                ]
             },
             {
                 id: 'arabic',
@@ -1208,12 +1505,53 @@
                 icon: 'fas fa-mosque',
                 description: 'Bahasa Arab dengan fokus pada Al-Quran dan percakapan',
                 levels: ['Pemula', 'Menengah', 'Lanjutan'],
-                structure: {
-                    penanggungJawab: 'Ahmad Al-Farsi',
-                    mentor: 'Fatima Al-Mansoor',
-                    coMentor: 'Omar Al-Hakim',
-                    students: 98
-                }
+                classes: [
+                    {
+                        id: 'arab_pemula',
+                        level: 'Pemula',
+                        description: 'Level pemula untuk bahasa Arab dasar',
+                        students: 67,
+                        structure: {
+                            penanggungJawab: 'Ahmad Al-Farsi',
+                            mentor: 'Fatima Al-Mansoor',
+                            coMentor: 'Omar Al-Hakim',
+                            students: 98,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'arab_menengah',
+                        level: 'Menengah',
+                        description: 'Level dasar menengah untuk percakapan',
+                        students: 45,
+                        structure: {
+                            penanggungJawab: 'Ahmad Al-Farsi',
+                            mentor: 'Fatima Al-Mansoor',
+                            coMentor: 'Omar Al-Hakim',
+                            students: 98,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'arab_lanjutan',
+                        level: 'Lanutan',
+                        description: 'Level menengah untuk keperluan sehari-hari',
+                        students: 38,
+                        structure: {
+                            penanggungJawab: 'Ahmad Al-Farsi',
+                            mentor: 'Fatima Al-Mansoor',
+                            coMentor: 'Omar Al-Hakim',
+                            students: 98,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                ]
             },
             {
                 id: 'russian',
@@ -1221,13 +1559,39 @@
                 flag: '🇷🇺',
                 icon: 'fas fa-snowflake',
                 description: 'Bahasa Rusia dengan aksara Cyrillic dan budaya Slavic',
-                levels: ['A1', 'A2', 'B1', 'B2'],
-                structure: {
-                    penanggungJawab: 'Ivan Petrov',
-                    mentor: 'Anastasia Ivanova',
-                    coMentor: 'Dmitry Sokolov',
-                    students: 87
-                }
+                levels: ['Lvl1', 'Lvl2'],
+                classes: [
+                    {
+                        id: 'russian_lvl1',
+                        level: 'Lvl1',
+                        description: 'Level pemula untuk komunikasi dasar',
+                        students: 42,
+                        structure: {
+                            penanggungJawab: 'Dana Haria',
+                            mentor: 'Hendra and Adella',
+                            coMentor: 'Sofwan and Cindy',
+                            students: 60,
+                            teachers: 2,
+                            startDate: '10 Sep 2025',
+                            schedule: 'Senin, 19:00-20:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'russian_lvl2',
+                        level: 'Lvl2',
+                        description: 'Level dasar untuk percakapan sehari-hari',
+                        students: 35,
+                        structure: {
+                            penanggungJawab: 'Dana Haria',
+                            mentor: 'Atika',
+                            coMentor: 'Sofwan',
+                            students: 20,
+                            teachers: 1,
+                            startDate: '10 Sep 2025',
+                            schedule: 'Ahad, 19:00-20:00 WIB'
+                        }
+                    },
+                ]
             },
             {
                 id: 'german',
@@ -1235,13 +1599,65 @@
                 flag: '🇩🇪',
                 icon: 'fas fa-landmark',
                 description: 'Bahasa Jerman dengan tata bahasa yang presisi',
-                levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-                structure: {
-                    penanggungJawab: 'Hans Müller',
-                    mentor: 'Anna Schmidt',
-                    coMentor: 'Klaus Wagner',
-                    students: 112
-                }
+                levels: ['A1', 'A2', 'B1', 'B2'],
+                classes: [
+                    {
+                        id: 'german_a1',
+                        level: 'A1',
+                        description: 'Level pemula untuk komunikasi dasar',
+                        students: 42,
+                        structure: {
+                            penanggungJawab: 'Hans Müller',
+                            mentor: 'Anna Schmidt',
+                            coMentor: 'Klaus Wagner',
+                            teachers: 2,
+                            startDate: '10 Januari 2024',
+                            schedule: 'Rabu & Sabtu, 18:00-20:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'german_a2',
+                        level: 'A2',
+                        description: 'Level dasar untuk percakapan sehari-hari',
+                        students: 35,
+                        structure: {
+                            penanggungJawab: 'Peter Fischer',
+                            mentor: 'Maria Weber',
+                            coMentor: 'Thomas Becker',
+                            teachers: 2,
+                            startDate: '28 Februari 2024',
+                            schedule: 'Senin & Kamis, 19:30-21:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'german_b1',
+                        level: 'B1',
+                        description: 'Level pemula untuk komunikasi dasar',
+                        students: 42,
+                        structure: {
+                            penanggungJawab: 'Hans Müller',
+                            mentor: 'Anna Schmidt',
+                            coMentor: 'Klaus Wagner',
+                            teachers: 2,
+                            startDate: '10 Januari 2024',
+                            schedule: 'Rabu & Sabtu, 18:00-20:00 WIB'
+                        }
+                    },
+                    {
+                        id: 'german_b2',
+                        level: 'B2',
+                        description: 'Level dasar untuk percakapan sehari-hari',
+                        students: 35,
+                        structure: {
+                            penanggungJawab: 'Peter Fischer',
+                            mentor: 'Maria Weber',
+                            coMentor: 'Thomas Becker',
+                            teachers: 2,
+                            startDate: '28 Februari 2024',
+                            schedule: 'Senin & Kamis, 19:30-21:30 WIB'
+                        }
+                    },
+                ]
             },
             {
                 id: 'thai',
@@ -1250,12 +1666,38 @@
                 icon: 'fas fa-umbrella-beach',
                 description: 'Bahasa Thailand dengan aksara Thai dan budaya yang kaya',
                 levels: ['Dasar', 'Menengah', 'Lanjutan'],
-                structure: {
-                    penanggungJawab: 'Somsak Chaiyaporn',
-                    mentor: 'Nonglak Srisuk',
-                    coMentor: 'Preecha Wong',
-                    students: 76
-                }
+                classes: [
+                    {
+                        id: 'thai_dasar',
+                        level: 'Pemula',
+                        description: 'Level pemula untuk bahasa Thai dasar',
+                        students: 67,
+                        structure: {
+                            penanggungJawab: 'Somsak Chaiyaporn',
+                            mentor: 'Nonglak Srisuk',
+                            coMentor: 'Preecha Wong',
+                            students: 76,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'thai_lanjutan',
+                        level: 'Pemula Lanjutan',
+                        description: 'Level dasar menengah untuk percakapan',
+                        students: 45,
+                        structure: {
+                            penanggungJawab: 'Somsak Chaiyaporn',
+                            mentor: 'Nonglak Srisuk',
+                            coMentor: 'Preecha Wong',
+                            students: 76,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                ]
             },
             {
                 id: 'turkish',
@@ -1264,12 +1706,68 @@
                 icon: 'fas fa-mosque',
                 description: 'Bahasa Turki dengan pengaruh Ottoman dan budaya Anatolia',
                 levels: ['A1', 'A2', 'B1', 'B2'],
-                structure: {
-                    penanggungJawab: 'Mehmet Yılmaz',
-                    mentor: 'Ayşe Demir',
-                    coMentor: 'Can Kaya',
-                    students: 92
-                }
+                classes: [
+                    {
+                        id: 'turkish_a1',
+                        level: 'A1',
+                        description: 'Level pemula untuk bahasa Arab dasar',
+                        students: 67,
+                        structure: {
+                            penanggungJawab: 'Mehmet Yılmaz',
+                            mentor: 'Ayşe Demir',
+                            coMentor: 'Can Kaya',
+                            students: 92,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'turkish_a2',
+                        level: 'A2',
+                        description: 'Level dasar menengah untuk percakapan',
+                        students: 45,
+                        structure: {
+                            penanggungJawab: 'Mehmet Yılmaz',
+                            mentor: 'Ayşe Demir',
+                            coMentor: 'Can Kaya',
+                            students: 92,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        },
+                        {
+                        id: 'turkish_b1',
+                        level: 'B1',
+                        description: 'Level pemula untuk komunikasi dasar',
+                        students: 42,
+                        structure: {
+                            penanggungJawab: 'Mehmet Yılmaz',
+                            mentor: 'Ayşe Demir',
+                            coMentor: 'Can Kaya',
+                            students: 92,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    {
+                        id: 'turkish_b2',
+                        level: 'B2',
+                        description: 'Level dasar untuk percakapan sehari-hari',
+                        students: 35,
+                        structure: {
+                            penanggungJawab: 'Mehmet Yılmaz',
+                            mentor: 'Ayşe Demir',
+                            coMentor: 'Can Kaya',
+                            students: 92,
+                            teachers: 2,
+                            startDate: '12 Januari 2024',
+                            schedule: 'Senin & Kamis, 18:30-20:30 WIB'
+                        }
+                    },
+                    },
+                ]
             }
         ];
 
@@ -1386,27 +1884,33 @@
                 <div style="text-align: center; margin-bottom: 20px;">
                     <div style="font-size: 48px; margin-bottom: 10px;">${language.flag}</div>
                     <h3 style="color: var(--primary); margin-bottom: 10px;">
-                        <i class="${languageIcons[language.id] || 'fas fa-language'}"></i> ${language.name}
+                        <i class="${language.icon}"></i> ${language.name}
                     </h3>
                     <p style="color: var(--gray); margin-bottom: 20px;">${language.description}</p>
                 </div>
 
                 <div style="background: var(--light); padding: 16px; border-radius: var(--border-radius); margin-bottom: 20px;">
                     <h4 style="margin-bottom: 12px; color: var(--primary);">
-                        <i class="fas fa-chart-line"></i> Statistik
+                        <i class="fas fa-chart-line"></i> Statistik Bahasa
                     </h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
                         <div style="text-align: center;">
                             <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">
-                                ${language.structure.students}
+                                ${language.classes.length}
                             </div>
-                            <div style="font-size: 0.85rem; color: var(--gray);">Siswa Aktif</div>
+                            <div style="font-size: 0.85rem; color: var(--gray);">Kelas</div>
                         </div>
                         <div style="text-align: center;">
                             <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">
-                                ${language.levels.length}
+                                ${language.classes.reduce((sum, cls) => sum + cls.students, 0)}
                             </div>
-                            <div style="font-size: 0.85rem; color: var(--gray);">Level</div>
+                            <div style="font-size: 0.85rem; color: var(--gray);">Total Siswa</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">
+                                ${language.classes.reduce((sum, cls) => sum + cls.structure.teachers, 0) + 2}
+                            </div>
+                            <div style="font-size: 0.85rem; color: var(--gray);">Pengajar</div>
                         </div>
                     </div>
                 </div>
@@ -1415,16 +1919,16 @@
                     <i class="fas fa-layer-group"></i> Pilih Level Kelas
                 </h4>
                 <div class="level-buttons">
-                    ${language.levels.map(level => `
-                        <div class="level-btn" onclick="selectLevel('${language.id}', '${level}')">
-                            ${level}
+                    ${language.classes.map(cls => `
+                        <div class="level-btn" onclick="showClassDetail('${language.id}', '${cls.id}')">
+                            ${cls.level}
                         </div>
                     `).join('')}
                 </div>
 
                 <div style="margin-top: 24px; padding-top: 20px; border-top: 2px solid var(--light-gray);">
-                    <button class="btn" style="width: 100%;" onclick="showStructureModal('${language.id}')">
-                        <i class="fas fa-sitemap"></i> Lihat Struktur Pengajar
+                    <button class="btn" style="width: 100%;" onclick="showAllClasses('${language.id}')">
+                        <i class="fas fa-sitemap"></i> Lihat Semua Kelas
                     </button>
                 </div>
             `;
@@ -1432,6 +1936,181 @@
             modal.classList.add('active');
         }
 
+        function showClassDetail(languageId, classId) {
+            const language = languages.find(lang => lang.id === languageId);
+            if (!language) return;
+            
+            const classDetail = language.classes.find(cls => cls.id === classId);
+            if (!classDetail) return;
+
+            const modal = document.getElementById('programModal'); // Reuse program modal
+            const title = document.getElementById('modalProgramTitle');
+            const body = document.getElementById('programModalBody');
+
+            title.textContent = `${language.name} - Level ${classDetail.level}`;
+            body.innerHTML = `
+                <div style="margin-bottom: 20px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">${language.flag}</div>
+                        <h3 style="color: var(--primary); margin-bottom: 5px;">
+                            ${language.name} - ${classDetail.level}
+                        </h3>
+                        <p style="color: var(--gray); margin-bottom: 20px;">${classDetail.description}</p>
+                    </div>
+        
+                    <h4 style="color: var(--primary); margin-bottom: 12px;">
+                        <i class="fas fa-info-circle"></i> Informasi Kelas
+                    </h4>
+                    <div style="background: var(--light); padding: 16px; border-radius: var(--border-radius); margin-bottom: 20px;">
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                            <div>
+                                <div style="font-size: 0.9rem; color: var(--gray); margin-bottom: 4px;">Jumlah Siswa</div>
+                                <div style="font-size: 1.25rem; font-weight: bold; color: var(--primary);">
+                                    <i class="fas fa-users"></i> ${classDetail.students} siswa
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.9rem; color: var(--gray); margin-bottom: 4px;">Mulai</div>
+                                <div style="font-size: 1rem; font-weight: 500; color: var(--dark);">
+                                    <i class="fas fa-calendar-alt"></i> ${classDetail.structure.startDate}
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.9rem; color: var(--gray); margin-bottom: 4px;">Jadwal</div>
+                                <div style="font-size: 1rem; font-weight: 500; color: var(--dark);">
+                                    <i class="fas fa-clock"></i> ${classDetail.structure.schedule}
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.9rem; color: var(--gray); margin-bottom: 4px;">Pengajar</div>
+                                <div style="font-size: 1rem; font-weight: 500; color: var(--dark);">
+                                    <i class="fas fa-chalkboard-teacher"></i> ${classDetail.structure.teachers} orang
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <h4 style="color: var(--primary); margin-bottom: 12px;">
+                        <i class="fas fa-sitemap"></i> Struktur Pengajar
+                    </h4>
+                    <div class="org-chart" style="padding: 0; margin-bottom: 20px;">
+                        <div class="org-level">
+                            <div class="org-member">
+                                <div class="member-role">Penanggung Jawab</div>
+                                <div class="member-name">${classDetail.structure.penanggungJawab}</div>
+                            </div>
+                        </div>
+                        <div class="org-level">
+                            <div class="org-member">
+                                <div class="member-role">Mentor</div>
+                                <div class="member-name">${classDetail.structure.mentor}</div>
+                            </div>
+                        </div>
+                        <div class="org-level">
+                            <div class="org-member">
+                                <div class="member-role">Co-Mentor</div>
+                                <div class="member-name">${classDetail.structure.coMentor}</div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <button class="btn" style="width: 100%;" onclick="joinClass('${language.id}', '${classId}')">
+                        <i class="fas fa-user-plus"></i> Daftar Kelas Ini
+                    </button>
+                </div>
+            `;
+        
+            // Close language modal first
+            closeModal('languageModal');
+            modal.classList.add('active');
+        }
+
+        // Fungsi untuk melihat semua kelas
+        function showAllClasses(languageId) {
+            const language = languages.find(lang => lang.id === languageId);
+            if (!language) return;
+
+            const modal = document.getElementById('programModal');
+            const title = document.getElementById('modalProgramTitle');
+            const body = document.getElementById('programModalBody');
+
+            title.textContent = `Semua Kelas ${language.name}`;
+            body.innerHTML = `
+                <div style="margin-bottom: 20px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">${language.flag}</div>
+                        <h3 style="color: var(--primary); margin-bottom: 5px;">
+                            ${language.name}
+                        </h3>
+                        <p style="color: var(--gray); margin-bottom: 20px;">${language.description}</p>
+                    </div>
+        
+                    <h4 style="color: var(--primary); margin-bottom: 12px;">
+                        <i class="fas fa-list-ul"></i> Daftar Kelas Tersedia
+                    </h4>
+                
+                    ${language.classes.map(cls => `
+                        <div style="background: white; border-radius: var(--border-radius); padding: 16px; margin-bottom: 12px; 
+                                  border: 2px solid var(--light-gray); cursor: pointer;" 
+                             onclick="showClassDetail('${language.id}', '${cls.id}')">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <div>
+                                    <h5 style="font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 4px;">
+                                        ${cls.level}
+                                    </h5>
+                                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 8px;">${cls.description}</p>
+                                </div>
+                                <div style="text-align: center; min-width: 60px;">
+                                    <div style="font-size: 1.25rem; font-weight: bold; color: var(--primary);">${cls.students}</div>
+                                    <div style="font-size: 0.8rem; color: var(--gray);">siswa</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--gray);">
+                                <span><i class="fas fa-calendar-alt"></i> ${cls.structure.startDate}</span>
+                                <span><i class="fas fa-clock"></i> ${cls.structure.schedule}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--light-gray);">
+                        <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); 
+                                  padding: 16px; border-radius: var(--border-radius); color: white;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="font-size: 0.9rem; opacity: 0.9;">Total Siswa ${language.name}</div>
+                                    <div style="font-size: 1.5rem; font-weight: 600;">
+                                        ${language.classes.reduce((sum, cls) => sum + cls.students, 0)} siswa
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="font-size: 0.9rem; opacity: 0.9;">Total Kelas</div>
+                                    <div style="font-size: 1.5rem; font-weight: 600;">${language.classes.length}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        
+            closeModal('languageModal');
+            modal.classList.add('active');
+        }
+
+        // Fungsi untuk mendaftar ke kelas
+        function joinClass(languageId, classId) {
+            const language = languages.find(lang => lang.id === languageId);
+            if (!language) return;
+        
+            const classDetail = language.classes.find(cls => cls.id === classId);
+            if (!classDetail) return;
+
+            // Show confirmation modal or form
+            alert(`Anda akan mendaftar ke kelas:\n\n${language.name} - ${classDetail.level}\n\nSistem akan mengarahkan Anda ke formulir pendaftaran.`);
+    
+            // Here you would typically redirect to registration form
+            // window.location.href = `/register/${languageId}/${classId}`;
+        }
+        
         // Show program modal with details
         function showProgramModal(programId) {
             const program = programs.find(prog => prog.id === programId);
