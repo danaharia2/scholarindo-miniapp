@@ -431,6 +431,8 @@
             justify-content: center;
             margin-bottom: 40px;
             position: relative;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
         }
 
         .org-level::after {
@@ -446,6 +448,22 @@
 
         .org-level:last-child::after {
             display: none;
+        }
+        /* Style khusus untuk founder cards */
+        .org-member.founder {
+            background: linear-gradient(135deg, #8B4513, #D2691E) !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+        }
+
+        .org-member.founder .member-role {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .org-member.founder .member-name {
+            color: white;
+            font-weight: 700;
         }
 
         .org-member {
@@ -484,7 +502,26 @@
             font-weight: 600;
             color: var(--primary);
         }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
+        /* Delay untuk setiap level */
+        .org-level:nth-child(1) { animation-delay: 0.1s; }
+        .org-level:nth-child(2) { animation-delay: 0.2s; }
+        .org-level:nth-child(3) { animation-delay: 0.3s; }
+        .org-level:nth-child(4) { animation-delay: 0.4s; }
+        .org-level:nth-child(5) { animation-delay: 0.5s; }
+        .org-level:nth-child(6) { animation-delay: 0.6s; }
+        .org-level:nth-child(7) { animation-delay: 0.7s; }
+    
         /* Bottom Tab Navigation */
         .bottom-tab {
             position: fixed;
@@ -790,7 +827,7 @@
                     <i class="fas fa-graduation-cap logo"></i>
                 </div>
                 <div>
-                    <h1 class="app-title">Scholarindo</h1>
+                    <h1 class="app-title">Scholar.indo</h1>
                     <p class="app-subtitle">Platform Pembelajaran Bahasa</p>
                 </div>
             </div>
@@ -1236,6 +1273,18 @@
             }
         ];
 
+        const languageIcons = {
+            'english': 'fas fa-globe-americas',
+            'japanese': 'fas fa-torii-gate',
+            'korean': 'fas fa-dharmachakra',
+            'mandarin': 'fas fa-dragon',
+            'arabic': 'fas fa-mosque',
+            'russian': 'fas fa-snowflake',
+            'german': 'fas fa-landmark',
+            'thai': 'fas fa-umbrella-beach',
+            'turkish': 'fas fa-mosque'
+        };
+
         // Data for programs
         const programs = [
             {
@@ -1336,7 +1385,9 @@
             body.innerHTML = `
                 <div style="text-align: center; margin-bottom: 20px;">
                     <div style="font-size: 48px; margin-bottom: 10px;">${language.flag}</div>
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">${language.name}</h3>
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">
+                        <i class="${languageIcons[language.id] || 'fas fa-language'}"></i> ${language.name}
+                    </h3>
                     <p style="color: var(--gray); margin-bottom: 20px;">${language.description}</p>
                 </div>
 
